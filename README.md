@@ -2,6 +2,11 @@
 
 A modern, responsive portfolio website showcasing my work and skills as a Full Stack Developer.
 
+## 🌟 Live Portfolio
+
+> ### [**Check out my live portfolio here!**](https://bobby-bash.github.io/Portfolio/)
+> Experience the interactive animations and modern design in action.
+
 ## ✨ Features
 
 - 🎨 Modern, minimalist design with smooth animations
@@ -82,7 +87,13 @@ To modify the Tailwind CSS:
 
 ## 🌐 Live Demo
 
-Visit the live portfolio at: [https://bobby-bash.github.io/Portfolio](https://bobby-bash.github.io/Portfolio)
+<div align="center">
+
+[![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live%20Demo-blue?style=for-the-badge&logo=github)](https://bobby-bash.github.io/Portfolio/)
+
+**[✨ Visit My Portfolio ✨](https://bobby-bash.github.io/Portfolio/)**
+
+</div>
 
 ## 📝 License
 
