@@ -272,13 +272,30 @@
 
   /* Skills Section */
   .skills-grid {
-    @apply grid gap-4;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    @apply grid gap-4 py-6;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 640px) {
+  .skill-item {
+    @apply flex items-center p-3 rounded-lg bg-gray-800/30 backdrop-blur-sm
+           border border-gray-700/30 hover:border-blue-400/30 transition-all duration-300;
+  }
+
+  .skill-item i {
+    @apply text-blue-400 text-2xl mr-3 transition-transform duration-300;
+  }
+
+  .skill-item:hover i {
+    transform: translateY(-2px);
+  }
+
+  .skill-item span {
+    @apply text-gray-300;
+  }
+
+  @media (max-width: 640px) {
     .skills-grid {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: 1fr;
     }
   }
 
