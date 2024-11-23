@@ -6,6 +6,7 @@
   /* Base Styles */
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -89,24 +90,127 @@
 
   /* Project Cards */
   .project-card {
-    @apply bg-gray-800/30 backdrop-blur-sm rounded-lg overflow-hidden 
-           border border-gray-700/30 hover:border-blue-400/30
-           transition-all duration-300 hover:-translate-y-2
-           opacity-0 transform translate-y-10;
-  }
-
-  .project-card.appear {
-    @apply opacity-100 translate-y-0;
+    @apply bg-gray-800/30 rounded-2xl overflow-hidden backdrop-blur-sm
+           transition-all duration-500 hover:scale-[1.02];
   }
 
   .project-overlay {
-    @apply absolute inset-0 bg-gray-900/90 flex items-center justify-center opacity-0 
-           transition-opacity duration-300 group-hover:opacity-100;
+    @apply absolute inset-0 bg-gray-900/90 backdrop-blur-sm
+           opacity-0 transition-all duration-500
+           flex items-center justify-center p-6
+           group-hover:opacity-100;
+    transform: translateY(100%);
+  }
+
+  .project-card:hover .project-overlay {
+    transform: translateY(0);
   }
 
   .project-link {
-    @apply px-4 py-2 bg-blue-400/20 backdrop-blur-sm text-white rounded-lg 
-           hover:bg-blue-400/30 transition-all duration-300;
+    @apply px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500
+           text-white rounded-full font-medium
+           transition-all duration-300 hover:scale-105
+           hover:shadow-lg hover:shadow-blue-500/25;
+  }
+
+  .tech-tag {
+    @apply px-3 py-1 text-sm rounded-full
+           bg-gray-700/50 text-gray-300
+           transition-colors duration-300
+           hover:bg-blue-500/20 hover:text-blue-400;
+  }
+
+  .project-card img {
+    @apply transition-transform duration-700 scale-100 group-hover:scale-110;
+  }
+
+  .project-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300
+           bg-gradient-to-br from-blue-500/10 to-purple-500/10;
+    z-index: -1;
+  }
+
+  .project-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .project-title {
+    @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .project-name {
+    @apply text-xl font-bold text-white mt-4 text-center relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .project-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #60A5FA, #7C3AED);
+    transition: width 0.3s ease;
+  }
+
+  .project-card:hover .project-name::after {
+    width: 50%;
+  }
+
+  /* Projects Section Styles */
+  .projects-container {
+    @apply scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-700;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-slider {
+    @apply min-w-max;
+  }
+
+  .project-heading {
+    @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300;
+    letter-spacing: 0.5px;
+  }
+
+  .project-description {
+    @apply leading-relaxed tracking-wide;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Projects Container */
+  .projects-container {
+    @apply relative w-full overflow-hidden;
+    max-width: calc(2 * (350px + 2rem)); /* Show 2 projects at a time */
+    margin: 0 auto;
+  }
+
+  .projects-track {
+    @apply cursor-grab active:cursor-grabbing;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .project-card {
+    @apply flex-none w-[350px];
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .projects-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .projects-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   /* Form Elements */
@@ -192,6 +296,18 @@
 
 ::-webkit-scrollbar-thumb {
   @apply bg-blue-400 rounded-full hover:bg-blue-500;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  @apply h-2;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-gray-700 rounded-full;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-blue-500 rounded-full hover:bg-blue-600;
 }
 
 /* Transition Delays */

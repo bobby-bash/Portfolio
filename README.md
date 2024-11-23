@@ -69,6 +69,48 @@ A modern, responsive portfolio website showcasing my journey in software develop
    - Direct message capability
    - Professional communication channel
 
+## 🚀 Featured Projects
+
+### 1. Slack Bot
+- **Description**: An intelligent Slack bot using Python that automates tasks and enhances team communication
+- **Technologies**: Python, Slack API, Bot Development
+- **Features**:
+  - Custom slash commands
+  - Automated notifications
+  - Task management
+  - Team communication tools
+- [View Code](https://github.com/bobby-bash/Slack-Bot)
+
+### 2. Smart Home Automation
+- **Description**: IoT-based home automation system using ESP8266 and Arduino
+- **Technologies**: IoT, Arduino, ESP8266
+- **Features**:
+  - Mobile app control
+  - Voice commands
+  - Automated scheduling
+  - Energy monitoring
+- [View Code](https://github.com/bobby-bash/Home-Automation)
+
+### 3. TheNo - Digital Menu
+- **Description**: Digital menu and ordering system for restaurants
+- **Technologies**: React, Node.js, MongoDB
+- **Features**:
+  - QR code scanning
+  - Real-time order tracking
+  - Payment integration
+  - Restaurant management dashboard
+- [View Code](https://github.com/bobby-bash/TheNo)
+
+### 4. Naan Mudhalvan Portal
+- **Description**: Educational platform for skill development and career guidance
+- **Technologies**: PHP, MySQL, Bootstrap
+- **Features**:
+  - Course management
+  - Progress tracking
+  - Certification system
+  - Career guidance tools
+- [View Code](https://github.com/bobby-bash/Naan-Mudhalvan)
+
 ## 🚀 Getting Started
 
 1. Clone the repository:

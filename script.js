@@ -234,4 +234,56 @@ function initializeMainContent() {
     if (profileImage) {
         profileImage.classList.add('animate-float');
     }
+
+    // Project Slider
+    const projectsTrack = document.getElementById('projectsTrack');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    projectsTrack.addEventListener('mousedown', (e) => {
+        isDown = true;
+        projectsTrack.classList.add('active');
+        startX = e.pageX - projectsTrack.offsetLeft;
+        scrollLeft = projectsTrack.scrollLeft;
+    });
+
+    projectsTrack.addEventListener('mouseleave', () => {
+        isDown = false;
+        projectsTrack.classList.remove('active');
+    });
+
+    projectsTrack.addEventListener('mouseup', () => {
+        isDown = false;
+        projectsTrack.classList.remove('active');
+    });
+
+    projectsTrack.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - projectsTrack.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed
+        projectsTrack.scrollLeft = scrollLeft - walk;
+    });
+
+    // Add touch support for mobile devices
+    projectsTrack.addEventListener('touchstart', (e) => {
+        isDown = true;
+        projectsTrack.classList.add('active');
+        startX = e.touches[0].pageX - projectsTrack.offsetLeft;
+        scrollLeft = projectsTrack.scrollLeft;
+    });
+
+    projectsTrack.addEventListener('touchend', () => {
+        isDown = false;
+        projectsTrack.classList.remove('active');
+    });
+
+    projectsTrack.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - projectsTrack.offsetLeft;
+        const walk = (x - startX) * 2;
+        projectsTrack.scrollLeft = scrollLeft - walk;
+    });
 }
