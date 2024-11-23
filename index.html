@@ -18,18 +18,24 @@
 
         <!-- Main Content -->
         <div id="main-content" class="opacity-0">
-            <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50">
-                <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
-                    <a href="#" class="text-2xl font-bold">Sridhar.dev</a>
-                    <div class="flex items-center space-x-8">
-                        <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                        <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-                        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm">
+                <div class="container mx-auto px-4">
+                    <div class="flex items-center justify-between h-16">
+                        <a href="#hero" class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                            Sridhar.dev
+                        </a>
+                        <div class="flex items-center space-x-8">
+                            <a href="#hero" class="nav-link" data-section="hero">Home</a>
+                            <a href="#about" class="nav-link" data-section="about">About</a>
+                            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                        </div>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </nav>
 
-            <section id="hero" class="min-h-screen flex items-center justify-center pt-20">
+            <!-- Hero/Home Section -->
+            <section id="hero" class="min-h-screen flex items-center justify-center py-20">
                 <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
                     <div class="md:w-1/2 text-center md:text-left">
                         <h1 class="text-5xl md:text-6xl font-bold mb-4">
@@ -114,79 +120,53 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="py-20 bg-gray-900">
+            <section id="projects" class="relative py-20">
                 <div class="container mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-bold project-title">Featured Projects</h2>
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold mb-4">Projects</h2>
                         <p class="text-gray-400 mt-4">Some of my recent work</p>
                     </div>
-                    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Slack Bot Project -->
-                        <div class="project-card group">
-                            <div class="relative overflow-hidden rounded-2xl aspect-video">
-                                <img src="./Images/slackbot.jpg" alt="Slack Bot" class="w-full h-full object-cover">
-                                <div class="project-overlay">
-                                    <div class="flex flex-col items-center space-y-4">
-                                        <h3 class="text-2xl font-bold">Slack Bot</h3>
-                                        <p class="text-gray-200 text-center max-w-xs">Intelligent Slack bot using Python for task automation and team communication</p>
-                                        <div class="flex space-x-4">
-                                            <a href="https://github.com/bobby-bash/slack_bot" target="_blank" class="project-link">View Project</a>
-                                        </div>
+                    <div class="projects-container">
+                        <div class="projects-track">
+                            <!-- Slack Bot Project -->
+                            <a href="https://github.com/bobby-bash/slack_bot" target="_blank" class="project-link">
+                                <div class="project-card">
+                                    <div class="project-image-container">
+                                        <img src="./Images/slackbot.jpg" alt="Slack Bot">
                                     </div>
+                                    <h3 class="project-name">Slack Bot</h3>
                                 </div>
-                            </div>
-                            <h3 class="project-name">Slack Bot</h3>
-                        </div>
+                            </a>
 
-                        <!-- Home Automation Project -->
-                        <div class="project-card group">
-                            <div class="relative overflow-hidden rounded-2xl aspect-video">
-                                <img src="./Images/homeautomation.jpg" alt="Home Automation" class="w-full h-full object-cover">
-                                <div class="project-overlay">
-                                    <div class="flex flex-col items-center space-y-4">
-                                        <h3 class="text-2xl font-bold">Smart Home Automation</h3>
-                                        <p class="text-gray-200 text-center max-w-xs">IoT-based home automation system with mobile app control and voice commands</p>
-                                        <div class="flex space-x-4">
-                                            <a href="https://github.com/bobby-bash/home_automation" target="_blank" class="project-link">View Project</a>
-                                        </div>
+                            <!-- Home Automation Project -->
+                            <a href="https://github.com/bobby-bash/home_automation" target="_blank" class="project-link">
+                                <div class="project-card">
+                                    <div class="project-image-container">
+                                        <img src="./Images/homeautomation.jpg" alt="Home Automation">
                                     </div>
+                                    <h3 class="project-name">Smart Home Automation</h3>
                                 </div>
-                            </div>
-                            <h3 class="project-name">Smart Home Automation</h3>
-                        </div>
+                            </a>
 
-                        <!-- TheNo Project -->
-                        <div class="project-card group">
-                            <div class="relative overflow-hidden rounded-2xl aspect-video">
-                                <img src="./Images/theno.jpg" alt="TheNo Project" class="w-full h-full object-cover">
-                                <div class="project-overlay">
-                                    <div class="flex flex-col items-center space-y-4">
-                                        <h3 class="text-2xl font-bold">TheNo - Digital Menu</h3>
-                                        <p class="text-gray-200 text-center max-w-xs">Digital menu system with QR code scanning and real-time order tracking</p>
-                                        <div class="flex space-x-4">
-                                            <a href="https://github.com/bobby-bash/TheNo" target="_blank" class="project-link">View Project</a>
-                                        </div>
+                            <!-- TheNo Project -->
+                            <a href="https://github.com/bobby-bash/TheNo" target="_blank" class="project-link">
+                                <div class="project-card">
+                                    <div class="project-image-container">
+                                        <img src="./Images/theno.jpg" alt="TheNo Project">
                                     </div>
+                                    <h3 class="project-name">TheNo - Digital Menu</h3>
                                 </div>
-                            </div>
-                            <h3 class="project-name">TheNo - Digital Menu</h3>
-                        </div>
+                            </a>
 
-                        <!-- Naan Mudhalvan Project -->
-                        <div class="project-card group">
-                            <div class="relative overflow-hidden rounded-2xl aspect-video">
-                                <img src="./Images/naanmudhalvan.jpg" alt="Naan Mudhalvan" class="w-full h-full object-cover">
-                                <div class="project-overlay">
-                                    <div class="flex flex-col items-center space-y-4">
-                                        <h3 class="text-2xl font-bold">Naan Mudhalvan Portal</h3>
-                                        <p class="text-gray-200 text-center max-w-xs">Educational platform for skill development and career guidance</p>
-                                        <div class="flex space-x-4">
-                                            <a href="https://github.com/bobby-bash/team3_naan_mudhalvan" target="_blank" class="project-link">View Project</a>
-                                        </div>
+                            <!-- Naan Mudhalvan Project -->
+                            <a href="https://github.com/bobby-bash/team3_naan_mudhalvan" target="_blank" class="project-link">
+                                <div class="project-card">
+                                    <div class="project-image-container">
+                                        <img src="./Images/naanmudhalvan.jpg" alt="Naan Mudhalvan">
                                     </div>
+                                    <h3 class="project-name">Mall Tenant Management</h3>
                                 </div>
-                            </div>
-                            <h3 class="project-name">Mall Tenant Management</h3>
+                            </a>
                         </div>
                     </div>
                 </div>

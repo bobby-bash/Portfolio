@@ -188,28 +188,31 @@ function initializeMainContent() {
         observerFadeIn.observe(el);
     });
 
-    // Update active navigation link based on scroll position
-    const sections = document.querySelectorAll('section');
+    // Active section highlighting
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        
+    function highlightNavigation() {
+        const scrollPosition = window.scrollY + 100;
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.pageYOffset >= sectionTop - 150) {
-                current = section.getAttribute('id');
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === sectionId) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
+    }
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
-            }
-        });
-    });
+    document.addEventListener('DOMContentLoaded', highlightNavigation);
+    window.addEventListener('scroll', highlightNavigation);
 
     // Intersection Observer for fade-in animations
     const observerFadeIn2 = new IntersectionObserver((entries) => {
@@ -236,47 +239,52 @@ function initializeMainContent() {
     }
 
     // Project Slider
-    const projectsTrack = document.getElementById('projectsTrack');
+    const projectsTrack = document.querySelector('.projects-track');
     let isDown = false;
     let startX;
     let scrollLeft;
 
     projectsTrack.addEventListener('mousedown', (e) => {
         isDown = true;
-        projectsTrack.classList.add('active');
+        projectsTrack.style.cursor = 'grabbing';
         startX = e.pageX - projectsTrack.offsetLeft;
         scrollLeft = projectsTrack.scrollLeft;
+        e.preventDefault(); // Prevent default dragging
     });
 
     projectsTrack.addEventListener('mouseleave', () => {
         isDown = false;
-        projectsTrack.classList.remove('active');
+        projectsTrack.style.cursor = 'grab';
     });
 
     projectsTrack.addEventListener('mouseup', () => {
         isDown = false;
-        projectsTrack.classList.remove('active');
+        projectsTrack.style.cursor = 'grab';
     });
 
     projectsTrack.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - projectsTrack.offsetLeft;
-        const walk = (x - startX) * 2; // Scroll speed
+        const walk = (x - startX) * 2;
         projectsTrack.scrollLeft = scrollLeft - walk;
     });
 
-    // Add touch support for mobile devices
+    // Prevent image dragging
+    const projectImages = document.querySelectorAll('.project-card img');
+    projectImages.forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+
+    // Touch events for mobile
     projectsTrack.addEventListener('touchstart', (e) => {
         isDown = true;
-        projectsTrack.classList.add('active');
         startX = e.touches[0].pageX - projectsTrack.offsetLeft;
         scrollLeft = projectsTrack.scrollLeft;
     });
 
     projectsTrack.addEventListener('touchend', () => {
         isDown = false;
-        projectsTrack.classList.remove('active');
     });
 
     projectsTrack.addEventListener('touchmove', (e) => {
