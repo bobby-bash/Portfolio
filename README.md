@@ -1,6 +1,8 @@
 # 🚀 Sridhar Ravi - Portfolio
 
-A modern, responsive portfolio website showcasing my work and skills as a Full Stack Developer.
+> 🎓 B.E Computer Science | Full Stack Developer | DevOps Engineer
+
+A modern, responsive portfolio website showcasing my journey in software development and cloud technologies. Passionate about building scalable applications and automating development workflows.
 
 ## 🌟 Live Portfolio
 
@@ -16,6 +18,25 @@ A modern, responsive portfolio website showcasing my work and skills as a Full S
 - 🔄 Interactive transitions and hover effects
 - 👋 Multi-language welcome animation
 - 📬 Contact form integration
+
+## 🛠️ Technologies & Skills
+
+### Development
+- Python, JavaScript, React
+- HTML5, Tailwind CSS
+- Node.js, Express
+
+### DevOps & Cloud
+- AWS Cloud Services
+- Docker & Containerization
+- Linux/Unix Systems
+- CI/CD Pipelines
+
+### Tools & Others
+- Git & GitHub
+- System Design
+- Automation Scripts
+- Technical Writing
 
 ## 🛠️ Technologies Used
 
