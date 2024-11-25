@@ -321,49 +321,15 @@ function initializeMainContent() {
         }
     });
 }
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxTykp4eT21FaPUV3-4IjG4-T2vBQ7gNtGZpRMX18Y6brddJnOQXciseGHkpG6B1rV9Tg/exec'
 
-// Function to submit form data to Google Sheets
-async function submitToSheet(e) {
-    e.preventDefault();
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTykp4eT21FaPUV3-4IjG4-T2vBQ7gNtGZpRMX18Y6brddJnOQXciseGHkpG6B1rV9Tg/exec';
-    const form = document.getElementById('contactForm');
 
-    try {
-        // First, submit to Google Sheets
-        const response = await fetch(scriptURL, {
-            method: 'POST',
-            body: new FormData(form)
-        });
-        
-        if (response.ok) {
-            // If Google Sheets submission is successful, send to FormSubmit for email
-            form.action = "https://formsubmit.co/archshri77@gmail.com";
-            form.method = "POST";
-            
-            // Create a copy of the form data
-            const formData = new FormData(form);
-            
-            // Submit to FormSubmit
-            await fetch("https://formsubmit.co/archshri77@gmail.com", {
-                method: 'POST',
-                body: formData
-            });
+const form = document.forms['contactForm']
 
-            alert("Thank you! Your form is submitted successfully.");
-            window.location.reload();
-        } else {
-            throw new Error('Network response was not ok');
-        }
-    } catch (error) {
-        console.error('Error!', error.message);
-        
-        // If Google Sheets fails, at least try to send the email
-        try {
-            form.action = "https://formsubmit.co/archshri77@gmail.com";
-            form.method = "POST";
-            form.submit();
-        } catch (emailError) {
-            console.error('Error sending email:', emailError.message);
-        }
-    }
-}
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => swal("Good job!", "Thansk for your message!", "success"))  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
