@@ -330,6 +330,6 @@ const form = document.forms['contactForm']
 form.addEventListener('submit', e => {
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => swal("Good job!", "Thansk for your message!", "success"))  .then(() => { window.location.reload(); })
+  .then(response => swal("Good job!", "Thanks for your message!", "success"))  .then(() => { window.location.reload(); })
   .catch(error => console.error('Error!', error.message))
 })
