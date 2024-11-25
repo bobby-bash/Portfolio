@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Initialize main content
 function initializeMainContent() {
-    const firstSection = document.querySelector('.first-section');
-    const secondSection = document.querySelector('.second-section');
+    const heroSection = document.querySelector('#hero');
+    const aboutSection = document.querySelector('#about');
     let isTransitioning = false;
     let currentSection = 1;
 
@@ -82,16 +82,18 @@ function initializeMainContent() {
         const delta = event.deltaY;
         
         if (delta > 0 && currentSection === 1) {
-            // Scrolling down to second section
+            // Scrolling down to about section
             isTransitioning = true;
-            firstSection.classList.add('scrolling');
-            secondSection.classList.add('scrolling');
+            heroSection.classList.add('scrolling');
+            aboutSection.classList.add('scrolling');
             currentSection = 2;
             
             // Add animation classes after transition starts
             setTimeout(() => {
-                document.querySelector('.profile-left').classList.add('animate-fadeIn');
-                document.querySelector('.profile-right').classList.add('animate-slideIn');
+                const profileLeft = aboutSection.querySelector('.space-y-6:first-child');
+                const profileRight = aboutSection.querySelector('.space-y-6:last-child');
+                if (profileLeft) profileLeft.classList.add('animate-fadeIn');
+                if (profileRight) profileRight.classList.add('animate-slideIn');
             }, 300);
             
             // Reset transition lock
@@ -99,15 +101,17 @@ function initializeMainContent() {
                 isTransitioning = false;
             }, 100);
         } else if (delta < 0 && currentSection === 2) {
-            // Scrolling up to first section
+            // Scrolling up to hero section
             isTransitioning = true;
-            firstSection.classList.remove('scrolling');
-            secondSection.classList.remove('scrolling');
+            heroSection.classList.remove('scrolling');
+            aboutSection.classList.remove('scrolling');
             currentSection = 1;
             
             // Remove animation classes
-            document.querySelector('.profile-left').classList.remove('animate-fadeIn');
-            document.querySelector('.profile-right').classList.remove('animate-slideIn');
+            const profileLeft = aboutSection.querySelector('.space-y-6:first-child');
+            const profileRight = aboutSection.querySelector('.space-y-6:last-child');
+            if (profileLeft) profileLeft.classList.remove('animate-fadeIn');
+            if (profileRight) profileRight.classList.remove('animate-slideIn');
             
             // Reset transition lock
             setTimeout(() => {
@@ -316,4 +320,27 @@ function initializeMainContent() {
             mobileMenu.classList.add('hidden');
         }
     });
+}
+
+// Function to submit form data to Google Sheets
+async function submitToSheet(e) {
+    e.preventDefault();
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTykp4eT21FaPUV3-4IjG4-T2vBQ7gNtGZpRMX18Y6brddJnOQXciseGHkpG6B1rV9Tg/exec';
+    const form = document.getElementById('contactForm');
+
+    try {
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form)
+        });
+        
+        if (response.ok) {
+            alert("Thank you! Your form is submitted successfully.");
+            window.location.reload();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    } catch (error) {
+        console.error('Error!', error.message);
+    }
 }
