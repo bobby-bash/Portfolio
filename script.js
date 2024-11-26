@@ -321,15 +321,26 @@ function initializeMainContent() {
         }
     });
 }
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxTykp4eT21FaPUV3-4IjG4-T2vBQ7gNtGZpRMX18Y6brddJnOQXciseGHkpG6B1rV9Tg/exec'
 
-
-const form = document.forms['contactForm']
-
-
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => swal("Good job!", "Thanks for your message!", "success"))  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
-})
+function submitForm(e) {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTykp4eT21FaPUV3-4IjG4-T2vBQ7gNtGZpRMX18Y6brddJnOQXciseGHkpG6B1rV9Tg/exec';
+    const form = document.forms['contactForm'];
+    const submitButton = form.querySelector('button[type="submit"]');
+    
+    if (e) e.preventDefault();
+    
+    // Disable submit button and show loading state
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+    
+    return fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => swal("Good job!", "Thanks for your message!", "success"))
+        .then(() => { window.location.reload(); })
+        .catch(error => {
+            console.error('Error!', error.message);
+            // Re-enable submit button on error
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+            swal("Error!", "Something went wrong!", "error");
+        });
+}
